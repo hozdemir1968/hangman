@@ -72,15 +72,17 @@ class _PlayGamePageState extends State<PlayGamePage> {
       appBar: AppBar(
         title: const Text("HangmaN"),
       ),
-      body: View_GamePage(context, alphabet),
+      body: viewGamePage(context, alphabet),
     );
   }
 
-  Column View_GamePage(BuildContext context, List<String> alphabets) {
+  Column viewGamePage(BuildContext context, List<String> alphabets) {
+    final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        const SizedBox(height: 5),
         Center(
           child: Stack(
             children: [
@@ -94,9 +96,9 @@ class _PlayGamePageState extends State<PlayGamePage> {
             ],
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 50),
+          constraints: BoxConstraints(maxHeight: size.height * 0.6),
           child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Row(
@@ -107,17 +109,17 @@ class _PlayGamePageState extends State<PlayGamePage> {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         SizedBox(
           width: double.infinity,
-          height: 300.0,
-          child: isGameOver ? View_Score(context) : View_Alphabet(alphabet),
+          height: size.height * 0.4,
+          child: isGameOver ? viewScore(context) : viewAlphabet(alphabet),
         )
       ],
     );
   }
 
-  Column View_Score(BuildContext context) {
+  Column viewScore(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -174,9 +176,12 @@ class _PlayGamePageState extends State<PlayGamePage> {
     );
   }
 
-  GridView View_Alphabet(List<String> alphabets) {
+  GridView viewAlphabet(List<String> alphabets) {
+    final size = MediaQuery.of(context).size;
+    int width;
+    size.width > 750 ? width = 10 : width = 7;
     return GridView.count(
-      crossAxisCount: 7,
+      crossAxisCount: width,
       mainAxisSpacing: 7.0,
       crossAxisSpacing: 7.0,
       padding: const EdgeInsets.all(10.0),

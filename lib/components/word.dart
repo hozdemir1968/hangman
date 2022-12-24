@@ -4,7 +4,7 @@ import 'colors.dart';
 Widget word(String character, bool hidden) {
   return Container(
     height: 45,
-    width: 35,
+    width: 40,
     padding: const EdgeInsets.all(5.0),
     decoration: BoxDecoration(
       color: AppColor.primaryColorDark,
