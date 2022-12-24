@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hangman/components/alphabet.dart';
 import 'package:hangman/services/score_service.dart';
+import 'package:turkish/turkish.dart';
 import '../components/colors.dart';
 import '../components/figure_image.dart';
 import '../language/langlist.dart';
@@ -44,7 +45,7 @@ class _PlayGamePageState extends State<PlayGamePage> {
         wordSelected = '';
         isGameOver = false;
         isWin = false;
-        wordSelected = widget.hangmanObject!.getWord()!.toUpperCase();
+        wordSelected = turkish.toUpperCase(widget.hangmanObject!.getWord()!);
         //print(wordSelected);
       }
     });
@@ -101,10 +102,8 @@ class _PlayGamePageState extends State<PlayGamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: wordSelected
-                  .split('')
-                  .map((e) => word(e.toUpperCase(), !selectedChar.contains(e.toUpperCase())))
-                  .toList(),
+              children:
+                  wordSelected.split('').map((e) => word(e, !selectedChar.contains(e))).toList(),
             ),
           ),
         ),
@@ -193,7 +192,7 @@ class _PlayGamePageState extends State<PlayGamePage> {
                           .split('')
                           .toList()
                           .where((element) => selectedChar.contains(element));
-                      if (!wordSelected.split('').contains(e.toUpperCase())) {
+                      if (!wordSelected.split('').contains(e)) {
                         tries--;
                         if (tries < 1) {
                           isGameOver = true;
