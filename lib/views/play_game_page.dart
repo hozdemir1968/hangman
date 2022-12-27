@@ -72,11 +72,11 @@ class _PlayGamePageState extends State<PlayGamePage> {
       appBar: AppBar(
         title: const Text("HangmaN"),
       ),
-      body: viewGamePage(context, alphabet),
+      body: viewPlayGamePage(context, alphabet),
     );
   }
 
-  Column viewGamePage(BuildContext context, List<String> alphabets) {
+  Column viewPlayGamePage(BuildContext context, List<String> alphabets) {
     final size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,7 +98,7 @@ class _PlayGamePageState extends State<PlayGamePage> {
         ),
         const SizedBox(height: 5),
         ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: size.height * 0.6),
+          constraints: BoxConstraints(maxHeight: size.height * 0.65),
           child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Row(
@@ -112,7 +112,7 @@ class _PlayGamePageState extends State<PlayGamePage> {
         const SizedBox(height: 5),
         SizedBox(
           width: double.infinity,
-          height: size.height * 0.4,
+          height: size.height * 0.35,
           child: isGameOver ? viewScore(context) : viewAlphabet(alphabet),
         )
       ],
