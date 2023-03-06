@@ -19,8 +19,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    selectedLang = languageList.singleWhere((e) => e.locale == context.locale);
     double height = MediaQuery.of(context).size.height;
+    selectedLang = languageList.singleWhere((e) => e.locale == context.locale);
     if (selectedLang!.langName == 'English - US') {
       widget.hangmanWords.readWordsEn();
     } else if (selectedLang!.langName == 'Türkçe - TR') {

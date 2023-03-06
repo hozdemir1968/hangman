@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: MyTheme().theme,
+      theme: MyTheme().darkTheme,
       initialRoute: 'homePage',
       routes: {
         'homePage': (context) => HomePage(),

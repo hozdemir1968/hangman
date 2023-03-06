@@ -104,8 +104,10 @@ class _PlayGamePageState extends State<PlayGamePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children:
-                  wordSelected.split('').map((e) => word(e, !selectedChar.contains(e))).toList(),
+              children: wordSelected
+                  .split('')
+                  .map((e) => word(e, !selectedChar.contains(e)))
+                  .toList(),
             ),
           ),
         ),
@@ -150,8 +152,8 @@ class _PlayGamePageState extends State<PlayGamePage> {
             padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (BuildContext context) => super.widget));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (BuildContext context) => super.widget));
           },
           child: Text(
             'new_game'.tr(),
@@ -204,7 +206,8 @@ class _PlayGamePageState extends State<PlayGamePage> {
                           isWin = false;
                           writeScore();
                         }
-                      } else if (comparing.length == wordSelected.replaceAll(' ', '').length) {
+                      } else if (comparing.length ==
+                          wordSelected.replaceAll(' ', '').length) {
                         isGameOver = true;
                         isWin = true;
                         writeScore();
